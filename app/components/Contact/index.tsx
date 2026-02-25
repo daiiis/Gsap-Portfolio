@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import emailjs from "emailjs-com";
+import React, { useState, useEffect } from "react";
 
 interface ContactSectionProps {
   contactZnx?: number;
@@ -22,7 +22,9 @@ const ContactSection = ({ contactZnx = 10 }: ContactSectionProps) => {
     email: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -48,7 +50,7 @@ const ContactSection = ({ contactZnx = 10 }: ContactSectionProps) => {
       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID &&
       process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
     ) {
-      console.log("Sending email...");
+      console.log("Sending email. ");
       console.log(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID);
       console.log(process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID);
       console.log(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
@@ -57,7 +59,7 @@ const ContactSection = ({ contactZnx = 10 }: ContactSectionProps) => {
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
           process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
           e.target as HTMLFormElement,
-          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
         )
         .then(
           (result) => {
@@ -68,7 +70,7 @@ const ContactSection = ({ contactZnx = 10 }: ContactSectionProps) => {
             console.log("zamla bdat ");
             console.log(error.text);
             alert("Failed to send message, please try again later.");
-          }
+          },
         );
     } else {
       alert("EmailJS configuration is missing.");
@@ -83,11 +85,13 @@ const ContactSection = ({ contactZnx = 10 }: ContactSectionProps) => {
   };
 
   return (
-    <section className={`-section absolute top-0 w-full h-screen ${contactZnx === 60 ? "z-50" : "z-10"}`}>
-      <div className="contact-section absolute top-0 w-full h-full flex flex-col justify-center items-center text-white ">
+    <section
+      className={`-section absolute top-0 h-screen w-full ${contactZnx === 60 ? "z-50" : "z-10"}`}
+    >
+      <div className="contact-section absolute top-0 flex h-full w-full flex-col items-center justify-center text-white">
         <div className="absolute inset-0 -z-10">
           <video
-            className="absolute inset-0 object-cover w-full h-full"
+            className="absolute inset-0 h-full w-full object-cover"
             src="/background-vedio.mp4"
             autoPlay
             loop
@@ -96,14 +100,19 @@ const ContactSection = ({ contactZnx = 10 }: ContactSectionProps) => {
           <div className="absolute inset-0 bg-black bg-opacity-80" />
         </div>
 
-        <h2 className="text-4xl md:text-6xl font-bold mb-8">Let&apos;s Work Together</h2>
-        <form className="w-full max-w-lg bg-opacity-50 p-6 rounded-lg" onSubmit={handleSubmit}>
+        <h2 className="mb-8 text-4xl font-bold md:text-6xl">
+          Let&apos;s Work Together
+        </h2>
+        <form
+          className="w-full max-w-lg rounded-lg bg-opacity-50 p-6"
+          onSubmit={handleSubmit}
+        >
           <div className="mb-4">
-            <label className="block text-sm font-bold mb-2" htmlFor="name">
+            <label className="mb-2 block text-sm font-bold" htmlFor="name">
               Name
             </label>
             <input
-              className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full rounded-lg border px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500"
               type="text"
               id="name"
               name="name"
@@ -114,11 +123,11 @@ const ContactSection = ({ contactZnx = 10 }: ContactSectionProps) => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-bold mb-2" htmlFor="email">
+            <label className="mb-2 block text-sm font-bold" htmlFor="email">
               Email
             </label>
             <input
-              className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full rounded-lg border px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500"
               type="email"
               id="email"
               name="email"
@@ -126,26 +135,28 @@ const ContactSection = ({ contactZnx = 10 }: ContactSectionProps) => {
               onChange={handleChange}
               required
             />
-            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+            {errors.email && (
+              <p className="mt-1 text-xs text-red-500">{errors.email}</p>
+            )}
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-bold mb-2" htmlFor="message">
+            <label className="mb-2 block text-sm font-bold" htmlFor="message">
               Message
             </label>
             <textarea
-              className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full rounded-lg border px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500"
               id="message"
               name="message"
               rows={4}
               value={formData.message}
               onChange={handleChange}
               required
-            ></textarea>
+             />
           </div>
           <div className="text-center">
             <button
-              className="bg-cyan-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-cyan-600 transition"
+              className="rounded-lg bg-cyan-500 px-4 py-2 font-bold text-white transition hover:bg-cyan-600"
               type="submit"
             >
               Send Message
