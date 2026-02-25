@@ -1,5 +1,5 @@
 name: Claude PR Reviewer
-on:
+"on":
   pull_request:
     types: [opened, synchronize]
 jobs:
