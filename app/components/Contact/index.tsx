@@ -41,7 +41,7 @@ const ContactSection = ({ contactZnx = 10 }: ContactSectionProps) => {
     e.preventDefault();
 
     if (!validateEmail(formData.email)) {
-      setErrors({ email: "Invalid email address" });
+      setErrors({ email: "Invalid email address " });
       return;
     }
 
@@ -152,7 +152,7 @@ const ContactSection = ({ contactZnx = 10 }: ContactSectionProps) => {
               value={formData.message}
               onChange={handleChange}
               required
-             />
+            />
           </div>
           <div className="text-center">
             <button
