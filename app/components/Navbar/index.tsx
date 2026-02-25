@@ -1,16 +1,18 @@
-import React from 'react';
-import Link from 'next/link';
+import Link from "next/link";
+import React from "react";
 
 const Navbar = () => {
   return (
     <header>
-      <nav className="navbar fixed top-0  w-screen flex items-center justify-between px-12 py-4 border-b border-white/10  font-fira ">
-        <span className="absolute bottom-0 h-0.5 w-16 bg-gradient-to-r from-transparent to-white animate-animate"></span>
-        <div className="logo text-3xl cursor-pointer font-w text-white">DAIIIS</div>
-        <ul className="menu flex gap-20 uppercase font-light text-xl">
+      <nav className="navbar fixed top-0 flex w-screen items-center justify-between border-b border-white/10 px-12 py-4 font-fira">
+        <span className="absolute bottom-0 h-0.5 w-16 animate-animate bg-gradient-to-r from-transparent to-white" />
+        <div className="logo font-w cursor-pointer text-3xl text-white">
+          DAIIIS
+        </div>
+        <ul className="menu flex gap-20 text-xl font-light uppercase">
           <li>
             <Link href="#about" className="text-white hover:opacity-80">
-              about
+              aboutt
             </Link>
           </li>
           <li>
@@ -29,7 +31,9 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-        <div className="btn font-medium uppercase text-white hover:opacity-80 cursor-pointer">Github</div>
+        <div className="btn cursor-pointer font-medium uppercase text-white hover:opacity-80">
+          Github
+        </div>
       </nav>
     </header>
   );
